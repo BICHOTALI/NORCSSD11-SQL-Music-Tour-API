@@ -4,7 +4,7 @@ const { Op } = require('sequelize')
 const db = require('../models')
 const { Band } = db
 
-// FIND ALL BANDS
+// (index) FIND ALL BANDS
 bands.get('/', async (req, res) => {
   try {
     const foundBands = await Band.findAll({
@@ -20,7 +20,7 @@ bands.get('/', async (req, res) => {
   }
 })
 
-// FIND A SPECIFIC BAND
+// (show) FIND A SPECIFIC BAND
 bands.get('/:id', async (req, res) => {
   try {
     const foundBand = await Band.findOne({
@@ -46,6 +46,15 @@ bands.post('/', async (req, res) => {
     res.status(500).json(error)
   }
 })
+//syntax to create a band
+// {
+//   "name": "The Test",
+//   "genre": "Experimental",
+//   "available_start_time": "2022-01-01T19:00:00",
+//   "end_time": "2022-01-01T20:30:00"
+// }
+
+
 
 // UPDATE A BAND
 bands.put('/:id', async (req, res) => {
