@@ -46,13 +46,13 @@ bands.post('/', async (req, res) => {
     res.status(500).json(error)
   }
 })
-//syntax to create a band
-// {
-//   "name": "The Test",
-//   "genre": "Experimental",
-//   "available_start_time": "2022-01-01T19:00:00",
-//   "end_time": "2022-01-01T20:30:00"
-// }
+// syntax to create a band
+// // {
+// //   "name": "The Test",
+// //   "genre": "Experimental",
+// //   "available_start_time": "2022-01-01T19:00:00",
+// //   "end_time": "2022-01-01T20:30:00"
+// // }
 
 
 

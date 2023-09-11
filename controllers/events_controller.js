@@ -32,7 +32,25 @@ events.get('/:id', async (req, res) => {
 })
 
 // Create an Event
-events.put
+events.post('/', async (req, res) => {
+    try {
+        const newEvent = await Event.create(req.body)
+        res.status(200).json({
+            message: 'Event created successfuly!',
+            data: newEvent
+        })
+    } 
+    catch (error) {
+        res.status(500).json(error)
+    }
+})
+//syntax to create event
+// {
+//     "name": "EventName",
+//     "date": "2023-09-10",
+//     "start_time": "2023-09-10T00:00:00" ,
+//     "end_time": "2023-09-10T00:00:00"
+//   }
 
 // EXPORT
 module.exports = events
