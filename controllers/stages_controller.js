@@ -58,5 +58,21 @@ stages.put('/:id', async (req, res) => {
     }
 })
 
+// Delete a Stage
+stages.delete('/:id', async (req, res) => {
+    try {
+        const deletedStage = await Stage.destroy({
+            where: {
+                stage_id: req.params.id
+            }
+        })
+        res.status(200).json({
+            message: `Successfuly deleted stage #${deletedStage}`
+        })
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 // EXPORT
 module.exports = stages
