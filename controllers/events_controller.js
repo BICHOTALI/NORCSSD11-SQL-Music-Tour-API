@@ -52,5 +52,38 @@ events.post('/', async (req, res) => {
 //     "end_time": "2023-09-10T00:00:00"
 //   }
 
+// Update an Event
+events.put('/:id', async (req, res) => {
+    try {
+        const updatedEvent = await Event.update(req.body, {
+            where: {
+                event_id: req.params.id
+            }
+        })
+        res.status(200).json({
+            message: `Successfully updated ${updatedEvent} event(s)`
+        })
+    } catch (error) {
+        res.status(500).json(error)    
+    }
+})
+
+// Delete an Event
+events.delete('/:id', async (req, res) => {
+    try {
+        const deletedEvent = await Event.destroy({
+            where: {
+                event_id: req.params.id
+            }
+        })
+        res.status(200).json({
+            message: `Successfuly deleted ${deletedEvent} event(s)`
+        })
+    } 
+    catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 // EXPORT
 module.exports = events
