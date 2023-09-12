@@ -42,5 +42,21 @@ stages.post('/', async (req, res) => {
     }
 })
 
+// Update a Stage
+stages.put('/:id', async (req, res) => {
+    try {
+        const updatedStage = await Stage.update(req.body, {
+            where: {
+                stage_id: req.params.id
+            }
+        })
+        res.status(200).json({
+            message: `Successfuly updated stage #${updatedStage}`
+        })
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 // EXPORT
 module.exports = stages
