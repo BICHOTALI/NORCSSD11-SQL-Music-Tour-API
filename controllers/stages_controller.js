@@ -16,5 +16,18 @@ stages.get('/', async (req, res) => {
     }
 })
 
+//Finds a Specific Stage
+stages.get('/:id', async (req, res) => {
+    try {
+        const foundStage = await Stage.findOne({
+            where: { stage_id: req.params.id }
+        })
+        res.status(500).json(foundStage)
+    } 
+    catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 // EXPORT
 module.exports = stages
