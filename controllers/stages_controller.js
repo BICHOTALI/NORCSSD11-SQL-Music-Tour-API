@@ -22,9 +22,22 @@ stages.get('/:id', async (req, res) => {
         const foundStage = await Stage.findOne({
             where: { stage_id: req.params.id }
         })
-        res.status(500).json(foundStage)
+        res.status(200).json(foundStage)
     } 
     catch (error) {
+        res.status(500).json(error)
+    }
+})
+
+// Create a Stage
+stages.post('/', async (req, res) => {
+    try {
+        const newStage = await Stage.create(req.body)
+        res.status(200).json({
+            message: `Successfuly inserted a new stage`,
+            data: newStage
+        })
+    } catch (error) {
         res.status(500).json(error)
     }
 })
